@@ -10,17 +10,18 @@ import { NgForm } from '@angular/forms';
 export class AppComponent {
 
   weatherReport: any;
+  cityName: string;
 
   constructor(private weather: WeatherService) { }
 
 
   onSubmit(form: NgForm) {
-    let city: string = form.value.city;
-    this.weather.getWeather(city).subscribe(data => {
+    this.cityName = form.value.city;
+    this.weather.getWeather(this.cityName).subscribe(data => {
       this.weatherReport = data;
-      console.log(this.weatherReport)
+      console.log(this.weatherReport);
     }, error => {
-      console.log(error)
+      console.log(error.message)
     })
     form.resetForm();
   }

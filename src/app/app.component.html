@@ -5,7 +5,10 @@
   <button class="input btn" [disabled]="weatherForm.invalid">Show Weather!</button>
 </form>
 
+
+
 <div class="content" *ngIf="weatherReport">
+  <p class="desc">{{cityName}}</p>
   <p class="desc">{{weatherReport.weather[0].description}}</p>
   <img src="http://openweathermap.org/img/w/{{weatherReport.weather[0].icon}}.png" alt="">
   <p class="temperature">{{weatherReport.main.temp}}<sup>o</sup>C</p>
