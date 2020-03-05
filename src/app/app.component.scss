@@ -34,10 +34,19 @@
 
 @media only screen and (max-width: 536px) {
   .temperature {
-    font-size: 8.5rem;
+    font-size: 7.5rem;
 
     sup {
-      top: 30px;
+      top: 15px;
+    }
+  }
+}
+@media only screen and (max-width: 425px) {
+  .temperature {
+    font-size: 7rem;
+
+    sup {
+      top: 10px;
     }
   }
 }
