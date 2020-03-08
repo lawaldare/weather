@@ -13,3 +13,5 @@
   <img src="http://openweathermap.org/img/w/{{weatherReport.weather[0].icon}}.png" alt="">
   <p class="temperature">{{weatherReport.main.temp}}<sup>o</sup>C</p>
 </div>
+
+<p class="desc" *ngIf="!weatherReport && cityName">{{cityName | uppercase}} not found!</p>
