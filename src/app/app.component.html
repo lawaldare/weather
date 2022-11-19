@@ -15,5 +15,5 @@
 </div>
 
 <ng-template #noWeatherReport>
-  <p class="desc">{{cityName | uppercase}} not found!</p>
+  <p class="desc" *ngIf="cityName">{{cityName | uppercase}} not found!</p>
 </ng-template>
