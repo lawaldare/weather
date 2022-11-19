@@ -7,11 +7,13 @@
 
 
 
-<div class="content" *ngIf="weatherReport">
+<div class="content" *ngIf="(weatherReport$ | async) as weatherReport; else noWeatherReport">
   <p class="desc">{{cityName | uppercase}}</p>
   <p class="desc">{{weatherReport.weather[0].description}}</p>
   <img src="http://openweathermap.org/img/w/{{weatherReport.weather[0].icon}}.png" alt="">
   <p class="temperature">{{weatherReport.main.temp}}<sup>o</sup>C</p>
 </div>
 
-<p class="desc" *ngIf="!weatherReport && cityName">{{cityName | uppercase}} not found!</p>
+<ng-template #noWeatherReport>
+  <p class="desc">{{cityName | uppercase}} not found!</p>
+</ng-template>
