@@ -1,19 +1,36 @@
 <h3 class="title">Weather</h3>
-<form class="form" #weatherForm="ngForm" (ngSubmit)="weatherForm.form.valid && onSubmit(weatherForm)">
-  <input type="text" class="input" placeholder="Enter city name" #city="ngModel" ngModel name="city" required
-    autocomplete="off">
-  <button class="input btn" [disabled]="weatherForm.invalid">Show Weather!</button>
+<form
+  class="form"
+  #weatherForm="ngForm"
+  (ngSubmit)="weatherForm.form.valid && onSubmit(weatherForm)"
+>
+  <input
+    type="text"
+    class="input"
+    placeholder="Enter city name"
+    #city="ngModel"
+    ngModel
+    name="city"
+    required
+    autocomplete="off"
+  />
+  <button class="input btn" [disabled]="weatherForm.invalid">
+    Show Weather!
+  </button>
 </form>
 
-
-
-<div class="content" *ngIf="(weatherReport$ | async) as weatherReport; else noWeatherReport">
-  <p class="desc">{{cityName | uppercase}}</p>
-  <p class="desc">{{weatherReport.weather[0].description}}</p>
-  <img src="http://openweathermap.org/img/w/{{weatherReport.weather[0].icon}}.png" alt="">
-  <p class="temperature">{{weatherReport.main.temp}}<sup>o</sup>C</p>
+<div class="content" *ngIf="weatherReport(); else noWeatherReport">
+  <p class="desc">{{ cityName | uppercase }}</p>
+  <p class="desc">{{ weatherReport()?.weather[0].description }}</p>
+  <img
+    src="http://openweathermap.org/img/w/{{
+      weatherReport()?.weather[0].icon
+    }}.png"
+    alt=""
+  />
+  <p class="temperature">{{ weatherReport()?.main.temp }}<sup>o</sup>C</p>
 </div>
 
 <ng-template #noWeatherReport>
-  <p class="desc" *ngIf="cityName">{{cityName | uppercase}} not found!</p>
+  <p class="desc" *ngIf="cityName">{{ cityName | uppercase }} not found!</p>
 </ng-template>
